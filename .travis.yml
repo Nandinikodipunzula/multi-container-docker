@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker build - nandinikodipunzula/multi-client-test -f ./client/Dockerfile.dev
+  - docker build -t nandinikodipunzula/multi-client-test -f ./client/Dockerfile.dev
 
 script:
   - docker run -e CI=true nandinikodipunzula.complex-test npm test -- --coverage

@@ -14,3 +14,10 @@ after_success:
   - docker build -t nandinikodipunzula/multi-nginx ./nginx
   - docker build -t nandinikodipunzula/multi-server ./server
   - docker build -t nandinikodipunzula/multi-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"
+  - docker push nandinikodipunzula/multi-client
+  - docker push nandinikodipunzula/multi-nginx
+  - docker push nandinikodipunzula/multi-server
+  - docker push nandinikodipunzula/multi-worker
+

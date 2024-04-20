@@ -4,20 +4,20 @@ services:
   - docker
 
 before_install:
-  - docker build --no-cache -t nandinikodipunzula/multi_client_test -f ./client/Dockerfile.dev ./client
+  - docker build  -t nandinikodipunzula/multi-container-project -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true nandinikodipunzula/multi_client_test npm test -- --coverage
+  - docker run -e CI=true nandinikodipunzula/multi-container-project npm test -- --coverage
 
 after_success:
-  - docker build -t nandinikodipunzula/multi-client ./client
-  - docker build -t nandinikodipunzula/multi-nginx ./nginx
-  - docker build -t nandinikodipunzula/multi-server ./server
-  - docker build -t nandinikodipunzula/multi-worker ./worker
+  - docker build -t nandinikodipunzula/multi-container-project-client ./client
+  - docker build -t nandinikodipunzula/multi-container-project-nginx ./nginx
+  - docker build -t nandinikodipunzula/multi-container-project-server ./server
+  - docker build -t nandinikodipunzula/multi-container-project-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"
-  - docker push nandinikodipunzula/multi-client
-  - docker push nandinikodipunzula/multi-nginx
-  - docker push nandinikodipunzula/multi-server
-  - docker push nandinikodipunzula/multi-worker
+  - docker push nandinikodipunzula/multi-container-project-client
+  - docker push nandinikodipunzula/multi-container-project-nginx
+  - docker push nandinikodipunzula/multi-container-project-server
+  - docker push nandinikodipunzula/multi-container-project-worker
 

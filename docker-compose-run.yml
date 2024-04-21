@@ -3,25 +3,25 @@ services:
   client:
     image: nandinikodipunzula/multi-container-project-client
     hostname: client
-    mem_limit: 128m
+    mem_limit: 512m
     container_name: client
 
   server:
     image: nandinikodipunzula/multi-container-project-server
     hostname: api
-    mem_limit: 128m
+    mem_limit: 512m
     container_name: server
 
   worker:
     image: nandinikodipunzula/multi-container-project-worker
     hostname: worker
-    mem_limit: 128m
+    mem_limit: 512m
     container_name: worker
 
   nginx:
     image: nandinikodipunzula/multi-container-project-nginx
     hostname: nginx
-    mem_limit: 128m
+    mem_limit: 512m
     container_name: nginx
     ports:
       - "80:80"
@@ -30,4 +30,4 @@ services:
       - server
 
 
-      
+
